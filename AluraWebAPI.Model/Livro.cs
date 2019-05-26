@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
 
-namespace AluraWebAPI.Model
+namespace Alura.ListaLeitura.Modelos
 {
     public class Livro
     {

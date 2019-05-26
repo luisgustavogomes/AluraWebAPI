@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.AspNetCore.Http;
 using System.IO;
-using Microsoft.AspNetCore.Http;
 
 
-namespace AluraWebAPI.Model
+namespace Alura.ListaLeitura.Modelos
 {
     public static class LivrosExtensions
     {

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace AluraWebAPI.DAL.Livros
+namespace Alura.ListaLeitura.Persistencia
 {
     public interface IRepository<TEntity> where TEntity : class
     {

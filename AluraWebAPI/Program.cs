@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace AluraWebAPI
+namespace Alura.ListaLeitura.WebApp
 {
     public class Program
     {

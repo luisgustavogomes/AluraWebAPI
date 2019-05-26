@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AluraWebAPI.Model
+namespace Alura.ListaLeitura.Modelos
 {
     public class ListaLeitura
     {

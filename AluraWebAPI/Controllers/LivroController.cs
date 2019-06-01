@@ -55,7 +55,6 @@ namespace Alura.ListaLeitura.WebApp.Controllers
             return View(model.ToModel());
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Detalhes(LivroUpload model)

@@ -12,10 +12,7 @@ namespace AluraWebAPI.Api
     {
         private readonly IRepository<Livro> _repo;
 
-        public LivrosController(IRepository<Livro> repository)
-        {
-            _repo = repository;
-        }
+        public LivrosController(IRepository<Livro> repository) => _repo = repository;
 
         [HttpGet]
         public IActionResult Recuperar(int id)

@@ -11,10 +11,7 @@ namespace Alura.ListaLeitura.WebApp.Controllers
     {
         private readonly IRepository<Livro> _repo;
 
-        public LivroController(IRepository<Livro> repository)
-        {
-            _repo = repository;
-        }
+        public LivroController(IRepository<Livro> repository) => _repo = repository;
 
         [HttpGet]
         public IActionResult Novo()
@@ -86,18 +83,11 @@ namespace Alura.ListaLeitura.WebApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public Livro RecuperaLivro(int id)
+        private Livro RecuperaLivro(int id)
         {
             return _repo.Find(id);
         }
 
-        public ActionResult<LivroUpload> DetalhesJson(int id)
-        {
-            var model = RecuperaLivro(id);
-            if (model == null)
-                return NotFound();
-            return model.ToModel();
-        }
-
+        
     }
 }

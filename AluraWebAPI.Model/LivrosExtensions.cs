@@ -43,7 +43,7 @@ namespace Alura.ListaLeitura.Modelos
                 Subtitulo = livro.Subtitulo,
                 Resumo = livro.Resumo,
                 Autor = livro.Autor,
-                Capa = $"/api/capas/{livro.Id}",
+                Capa = $"Livros/{livro.Id}/capa",
                 Lista = livro.Lista.ParaString()
             };
         }

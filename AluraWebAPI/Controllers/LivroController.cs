@@ -59,13 +59,13 @@ namespace Alura.ListaLeitura.WebApp.Controllers
             if (ModelState.IsValid)
             {
                 var livro = model.ToLivro();
-                if (model.Capa == null)
-                {
-                    livro.ImagemCapa = _repo.All
-                        .Where(l => l.Id == livro.Id)
-                        .Select(l => l.ImagemCapa)
-                        .FirstOrDefault();
-                }
+                //if (model.Capa == null)
+                //{
+                    //livro.ImagemCapa = _repo.All
+                    //    .Where(l => l.Id == livro.Id)
+                    //    .Select(l => l.ImagemCapa)
+                    //    .FirstOrDefault();
+                //}
                 _repo.Alterar(livro);
                 return RedirectToAction("Index", "Home");
             }

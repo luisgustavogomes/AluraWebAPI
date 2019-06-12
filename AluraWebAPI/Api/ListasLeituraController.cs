@@ -1,17 +1,14 @@
-﻿using System;
+﻿using Alura.ListaLeitura.Modelos;
+using Alura.ListaLeitura.Persistencia;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Alura.ListaLeitura.Modelos;
-using Alura.ListaLeitura.Persistencia;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Lista = Alura.ListaLeitura.Modelos.ListaLeitura;
 
 
 namespace AluraWebAPI.Api
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ListasLeituraController : ControllerBase
     {
@@ -49,18 +46,7 @@ namespace AluraWebAPI.Api
             return Ok(lista);
         }
 
-        [HttpGet("{id}/capa")]
-        public IActionResult ImagemCapa(int id)
-        {
-            byte[] img = _repo.All
-                .Where(l => l.Id == id)
-                .Select(l => l.ImagemCapa)
-                .FirstOrDefault();
-            if (img != null)
-                return File(img, "image/png");
-            //return File("~/images/capas/capa-vazia.png", "image/png");
-            return NotFound();
-        }
+
 
     }
 }

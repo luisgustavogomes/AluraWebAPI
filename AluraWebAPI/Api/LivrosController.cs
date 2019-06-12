@@ -1,25 +1,37 @@
 ﻿using Alura.ListaLeitura.Modelos;
 using Alura.ListaLeitura.Persistencia;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AluraWebAPI.Api
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class LivrosController : ControllerBase
     {
         //Created() --> 201
         //Ok() --> 200
         //BadRequest() --> 400
         //NoContent() --> 204
+        // --EXEMPLO DE GET COM UM ARRAY NO QUER
+        //[AllowAnonymous]
+        //[HttpGet]
+        //public ActionResult GetPowerPlants([FromQuery(Name = "id"]int[] id)
+        //{
+        //    ///condigo...
+        //    return Ok(ids);
+        //}
 
         private readonly IRepository<Livro> _repo;
 
         public LivrosController(IRepository<Livro> repository) => _repo = repository;
+
+        [HttpGet]
+        public IActionResult RecuperarListaDeLivros()
+        {
+            var lista = _repo.All.Select(l => l.ToApi()).ToList();
+            return Ok(lista);
+        }
 
         [HttpGet("{id}")]
         public IActionResult Recuperar(int id)
@@ -29,15 +41,21 @@ namespace AluraWebAPI.Api
             {
                 return NotFound();
             }
-            return Ok(model.ToModel());
+            return Ok(model.ToApi());
         }
 
-        [HttpGet]
-        public IActionResult RecuperarListaDeLivros()
+        [HttpGet("{id}/capa")]
+        public IActionResult ImagemCapa(int id)
         {
-            var lista = _repo.All.Select(l => l.ToModel()).ToList();
-            return Ok(lista);
+            byte[] img = _repo.All
+                .Where(l => l.Id == id)
+                .Select(l => l.ImagemCapa)
+                .FirstOrDefault();
+            if (img != null)
+                return File(img, "image/png");
+            return NotFound();
         }
+
 
         [HttpPost]
         public IActionResult Incluir([FromBody] LivroUpload model)
@@ -84,4 +102,3 @@ namespace AluraWebAPI.Api
 
     }
 }
- 

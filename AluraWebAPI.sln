@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AluraWebAPI", "AluraWebAPI\AluraWebAPI.csproj", "{3E5C0140-A775-4C33-AC82-123A3C2B5AA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AluraWebAPI", "AluraWebAPI\AluraWebAPI.csproj", "{3E5C0140-A775-4C33-AC82-123A3C2B5AA2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Apps", "2-Apps", "{7C44A853-EBCF-4BD9-B123-30F1754D1648}"
 EndProject
@@ -11,13 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Common", "0-Common", "{6B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Services", "1-Services", "{5F18E4C3-B021-42CE-A36E-15367D782C96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AluraWebAPI.DAL.Livros", "AluraWebAPI.DAL.Livros\AluraWebAPI.DAL.Livros.csproj", "{8147A67A-5EC1-4AC4-B136-0AA533A3ECD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AluraWebAPI.DAL.Livros", "AluraWebAPI.DAL.Livros\AluraWebAPI.DAL.Livros.csproj", "{8147A67A-5EC1-4AC4-B136-0AA533A3ECD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AluraWebAPI.DAL.Usuarios", "AluraWebAPI.DAL.Usuarios\AluraWebAPI.DAL.Usuarios.csproj", "{D69BD2C7-4D7E-4ECB-92E1-D8C7D36BC33D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AluraWebAPI.DAL.Usuarios", "AluraWebAPI.DAL.Usuarios\AluraWebAPI.DAL.Usuarios.csproj", "{D69BD2C7-4D7E-4ECB-92E1-D8C7D36BC33D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AluraWebAPI.Model", "AluraWebAPI.Model\AluraWebAPI.Model.csproj", "{20C9DFB6-2BFD-4920-A50B-B3BC9B51AFEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AluraWebAPI.Model", "AluraWebAPI.Model\AluraWebAPI.Model.csproj", "{20C9DFB6-2BFD-4920-A50B-B3BC9B51AFEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AluraWebAPI.Seguranca", "AluraWebAPI.Seguranca\AluraWebAPI.Seguranca.csproj", "{CCDA4A11-C5ED-48BC-A765-BB6450C2D402}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AluraWebAPI.Seguranca", "AluraWebAPI.Seguranca\AluraWebAPI.Seguranca.csproj", "{CCDA4A11-C5ED-48BC-A765-BB6450C2D402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AluraWebApi.AuthProvider", "AluraWebApi.AuthProvider\AluraWebApi.AuthProvider.csproj", "{7001A894-E631-40AB-AA2F-D00091144846}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AluraWebApi.Api", "AluraWebApi.Api\AluraWebApi.Api.csproj", "{EA82017A-2D89-4167-BE48-64E7505256A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{CCDA4A11-C5ED-48BC-A765-BB6450C2D402}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCDA4A11-C5ED-48BC-A765-BB6450C2D402}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCDA4A11-C5ED-48BC-A765-BB6450C2D402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7001A894-E631-40AB-AA2F-D00091144846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7001A894-E631-40AB-AA2F-D00091144846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7001A894-E631-40AB-AA2F-D00091144846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7001A894-E631-40AB-AA2F-D00091144846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA82017A-2D89-4167-BE48-64E7505256A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA82017A-2D89-4167-BE48-64E7505256A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA82017A-2D89-4167-BE48-64E7505256A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA82017A-2D89-4167-BE48-64E7505256A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +67,8 @@ Global
 		{D69BD2C7-4D7E-4ECB-92E1-D8C7D36BC33D} = {6BE293BB-34B0-4938-90C1-B6BEA3151D06}
 		{20C9DFB6-2BFD-4920-A50B-B3BC9B51AFEA} = {6BE293BB-34B0-4938-90C1-B6BEA3151D06}
 		{CCDA4A11-C5ED-48BC-A765-BB6450C2D402} = {6BE293BB-34B0-4938-90C1-B6BEA3151D06}
+		{7001A894-E631-40AB-AA2F-D00091144846} = {5F18E4C3-B021-42CE-A36E-15367D782C96}
+		{EA82017A-2D89-4167-BE48-64E7505256A6} = {5F18E4C3-B021-42CE-A36E-15367D782C96}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {59273CDF-F8CB-44C7-B61E-F2885FF6A4BE}

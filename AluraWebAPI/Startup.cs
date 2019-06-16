@@ -1,4 +1,5 @@
-﻿using Alura.ListaLeitura.Modelos;
+﻿using Alura.ListaLeitura.HttpClients;
+using Alura.ListaLeitura.Modelos;
 using Alura.ListaLeitura.Persistencia;
 using Alura.ListaLeitura.Seguranca;
 using AluraWebAPI.Formatters;
@@ -52,7 +53,6 @@ namespace Alura.ListaLeitura.WebApp
                 options.LoginPath = "/Usuario/Login";
             });
 
-            services.AddTransient<IRepository<Livro>, RepositorioBaseEF<Livro>>();
 
             services
                 .AddMvc(options =>
@@ -61,7 +61,12 @@ namespace Alura.ListaLeitura.WebApp
                 })
                 .AddXmlSerializerFormatters();
 
-            
+            services.AddTransient<IRepository<Livro>, RepositorioBaseEF<Livro>>();
+            services.AddHttpClient<LivroApiClient>(client =>
+            {
+                client.BaseAddress = new System.Uri("http://localhost:6000/api/");
+            });
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -76,7 +81,7 @@ namespace Alura.ListaLeitura.WebApp
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();

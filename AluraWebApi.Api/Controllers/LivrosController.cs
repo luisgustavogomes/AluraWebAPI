@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Alura.ListaLeitura.Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class LivrosController : ControllerBase
@@ -18,7 +18,7 @@ namespace Alura.ListaLeitura.Api.Controllers
         // --EXEMPLO DE GET COM UM ARRAY NO QUER
         //[AllowAnonymous]
         //[HttpGet]
-        //public ActionResult GetPowerPlants([FromQuery(Name = "id"]int[] id)
+        //public ActionResult GetPowerPlants([FromQuery(Name = "id")] int[] id)
         //{
         //    ///condigo...
         //    return Ok(ids);

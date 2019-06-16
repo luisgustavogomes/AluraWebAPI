@@ -63,7 +63,7 @@
                 <select asp-for="Lista" class="form-control">
                     @foreach (var tipo in Enum.GetValues(typeof(TipoListaLeitura)))
                     {
-                    <option value="@tipo">@tipo</option>
+                        <option value="@tipo">@tipo</option>
                     }
                 </select>
                 <span asp-validation-for="Capa" class="text-danger"></span>
@@ -99,7 +99,9 @@
                     reader.readAsDataURL(input.files[0]);
                 }
                 else {
-                    $('#imgCapa').attr('src', '~/images/capas/capa-vazia.png');
+                    //$('#imgCapa').attr('src', '~/images/capas/capa-vazia.png');
+                    console.log("Caiu no else do JS Detalhes!");
+
                 }
             });
         });

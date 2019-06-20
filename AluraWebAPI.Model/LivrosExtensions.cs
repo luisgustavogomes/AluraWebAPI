@@ -20,6 +20,31 @@ namespace Alura.ListaLeitura.Modelos
             }
         }
 
+        public static byte[] ConvertToBytes(this Livro livro)
+        {
+            //if (image == null)
+            //{
+            //    Image img = Image.FromFile(@"C:\Users\lg.LUIS\source\repos\AluraWebAPI\AluraWebAPI\wwwroot\images\capas\capa-vazia.png");
+            //    byte[] arr;
+            //    using (MemoryStream ms = new MemoryStream())
+            //    {
+            //        img.Save(ms, ImageFormat.Jpeg);
+            //        arr = ms.ToArray();
+            //    }
+            //}
+            //if (livro.ImagemCapa == null)
+            //{
+            //    return null;
+            //}
+            //using (var inputStream = livro.ImagemCapa)
+            //using (var stream = new MemoryStream())
+            //{
+            //    inputStream.CopyTo(stream);
+            //    return stream.ToArray();
+            //}
+            return null;
+        }
+
         public static Livro ToLivro(this LivroUpload model)
         {
             return new Livro

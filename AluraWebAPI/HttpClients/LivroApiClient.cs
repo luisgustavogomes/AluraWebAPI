@@ -43,40 +43,6 @@ namespace Alura.ListaLeitura.HttpClients
             resposta.EnsureSuccessStatusCode();
         }
 
-        private string EnvolveComAspasDuplas(string valor)
-        {
-            return $"\u0022{valor}\u0022";
-        }
-
-        private HttpContent CreateMultipartContent(Livro livro)
-        {
-            var content = new MultipartFormDataContent();
-
-            content.Add(new StringContent(livro.Titulo), EnvolveComAspasDuplas("titulo"));
-            content.Add(new StringContent(livro.Lista.ParaString()), EnvolveComAspasDuplas("lista"));
-
-            if (livro.Id > 0)
-                content.Add(new StringContent(Convert.ToString(livro.Id)), EnvolveComAspasDuplas("id"));
-
-            if (!string.IsNullOrEmpty(livro.Subtitulo))
-                content.Add(new StringContent(livro.Subtitulo), EnvolveComAspasDuplas("subtitulo"));
-
-            if (!string.IsNullOrEmpty(livro.Resumo))
-                content.Add(new StringContent(livro.Resumo), EnvolveComAspasDuplas("resumo"));
-
-            if (!string.IsNullOrEmpty(livro.Autor))
-                content.Add(new StringContent(livro.Autor), EnvolveComAspasDuplas("autor"));
-
-            if (livro.ImagemCapa != null)
-            {
-                var imageContent = new ByteArrayContent(livro.ImagemCapa);
-                imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/png");
-                content.Add(imageContent, EnvolveComAspasDuplas("capa"), EnvolveComAspasDuplas("capa.png"));
-            }
-
-            return content;
-        }
-
         public async Task PostLivroAsync(LivroUpload livro)
         {
             HttpContent content = CreateMultipartContent(livro.ToLivro());
@@ -99,6 +65,36 @@ namespace Alura.ListaLeitura.HttpClients
             }
 
         }
+
+        private HttpContent CreateMultipartContent(Livro livro)
+        {
+            var content = new MultipartFormDataContent();
+
+            content.Add(new StringContent(livro.Titulo), "titulo");
+            content.Add(new StringContent(livro.Lista.ParaString()), ("lista"));
+
+            if (livro.Id > 0)
+                content.Add(new StringContent(Convert.ToString(livro.Id)), ("id"));
+
+            if (!string.IsNullOrEmpty(livro.Subtitulo))
+                content.Add(new StringContent(livro.Subtitulo), ("subtitulo"));
+
+            if (!string.IsNullOrEmpty(livro.Resumo))
+                content.Add(new StringContent(livro.Resumo), ("resumo"));
+
+            if (!string.IsNullOrEmpty(livro.Autor))
+                content.Add(new StringContent(livro.Autor), ("autor"));
+
+            if (livro.ImagemCapa != null)
+            {
+                var imageContent = new ByteArrayContent(livro.ImagemCapa);
+                imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/png");
+                content.Add(imageContent, ("capa"), ("capa.png"));
+            }
+            
+            return content;
+        }
+
 
     }
 }

@@ -35,7 +35,6 @@ namespace Alura.ListaLeitura.Services
                 if (result.Succeeded)
                 {
                     // header + payload (claim)+ signature
-
                     var clains = new[]
                     {
                         new Claim(JwtRegisteredClaimNames.Sub, model.Login),
@@ -51,7 +50,6 @@ namespace Alura.ListaLeitura.Services
                         claims: clains,
                         signingCredentials: credenciais,
                         expires: DateTime.Now.AddMinutes(30)
-                        
                     );
 
                     var tokenString = new JwtSecurityTokenHandler().WriteToken(token);

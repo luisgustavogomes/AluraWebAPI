@@ -10,7 +10,7 @@ using Lista = Alura.ListaLeitura.Modelos.ListaLeitura;
 namespace Alura.ListaLeitura.Api.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("api/v1.0/[controller]")]
     [ApiController]
     public class ListasLeituraController : ControllerBase
     {

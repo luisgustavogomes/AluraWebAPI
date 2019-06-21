@@ -8,25 +8,13 @@ namespace Alura.ListaLeitura.Api.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/v1.0/[controller]")]
-    public class LivrosController : ControllerBase
+    [Route("api/v2.0/livros")]
+    public class Livros2Controller : ControllerBase
     {
-        //Created() --> 201
-        //Ok() --> 200
-        //BadRequest() --> 400
-        //NoContent() --> 204
-        // --EXEMPLO DE GET COM UM ARRAY NO QUER
-        //[AllowAnonymous]
-        //[HttpGet]
-        //public ActionResult GetPowerPlants([FromQuery(Name = "id")] int[] id)
-        //{
-        //    ///condigo...
-        //    return Ok(ids);
-        //}
-
+  
         private readonly IRepository<Livro> _repo;
 
-        public LivrosController(IRepository<Livro> repository) => _repo = repository;
+        public Livros2Controller(IRepository<Livro> repository) => _repo = repository;
 
         [HttpGet]
         public IActionResult RecuperarListaDeLivros()
@@ -43,7 +31,7 @@ namespace Alura.ListaLeitura.Api.Controllers
             {
                 return NotFound();
             }
-            return Ok(model.ToApi());
+            return Ok(model);
         }
 
         [HttpGet("{id}/capa")]

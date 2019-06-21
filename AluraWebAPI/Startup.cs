@@ -1,11 +1,9 @@
 ﻿using Alura.ListaLeitura.HttpClients;
-using Alura.ListaLeitura.Seguranca;
 using AluraWebAPI.Formatters;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,25 +26,11 @@ namespace Alura.ListaLeitura.WebApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<AuthDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("AuthDB"));
-            });
-
-            //services.AddIdentity<Usuario, IdentityRole>(options =>
-            //{
-            //    options.Password.RequiredLength = 3;
-            //    options.Password.RequireNonAlphanumeric = false;
-            //    options.Password.RequireUppercase = false;
-            //    options.Password.RequireLowercase = false;
-            //}).AddEntityFrameworkStores<AuthDbContext>();
-
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
                     options.LoginPath = "/Usuario/Login";
                 });
-
 
             services.AddMvc(options =>
                 {

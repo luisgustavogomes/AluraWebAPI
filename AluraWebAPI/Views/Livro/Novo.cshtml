@@ -63,7 +63,7 @@
             </div>
 
             <footer class="form-group">
-                <button class="btn btn-outline-success">GRAVAR</button>
+                <button id="mybutton" class="btn btn-outline-success">GRAVAR</button>
             </footer>
         </div>
 
@@ -75,6 +75,7 @@
     <script>
         $(function () {
             $('#ImagemCapa').change(function () {
+                debugger;
                 console.log("chegou aqui!");
                 var input = this;
                 var url = $(this).val();
@@ -88,10 +89,14 @@
                 }
                 else {
                     $('#imgCapa').attr('src', '~/images/capas/capa-vazia.png');
-                    console.log("Caiu no Else do JS do NovoLivro!");
-
                 }
             });
+        });
+
+        $("#mybutton").click(function () {
+            debugger;
+
+             $('#imgCapa').attr('src', '~/images/capas/capa-vazia.png');
         });
     </script>
 }

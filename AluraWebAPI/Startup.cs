@@ -1,12 +1,10 @@
 ﻿using Alura.ListaLeitura.HttpClients;
-using Alura.ListaLeitura.Modelos;
-using Alura.ListaLeitura.Persistencia;
 using Alura.ListaLeitura.Seguranca;
 using AluraWebAPI.Formatters;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,43 +28,43 @@ namespace Alura.ListaLeitura.WebApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<LeituraContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("ListaLeitura"));
-            });
-
             services.AddDbContext<AuthDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("AuthDB"));
             });
 
-            services.AddIdentity<Usuario, IdentityRole>(options =>
-            {
-                options.Password.RequiredLength = 3;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireLowercase = false;
-            }).AddEntityFrameworkStores<AuthDbContext>();
+            //services.AddIdentity<Usuario, IdentityRole>(options =>
+            //{
+            //    options.Password.RequiredLength = 3;
+            //    options.Password.RequireNonAlphanumeric = false;
+            //    options.Password.RequireUppercase = false;
+            //    options.Password.RequireLowercase = false;
+            //}).AddEntityFrameworkStores<AuthDbContext>();
 
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = "/Usuario/Login";
-            });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Usuario/Login";
+                });
 
 
-            services
-                .AddMvc(options =>
+            services.AddMvc(options =>
                 {
                     options.OutputFormatters.Add(new LivroCsvFormatter());
                 })
                 .AddXmlSerializerFormatters();
 
-            services.AddTransient<IRepository<Livro>, RepositorioBaseEF<Livro>>();
             services.AddHttpClient<LivroApiClient>(client =>
             {
                 client.BaseAddress = new System.Uri("http://localhost:6000/api/");
             });
 
+            services.AddHttpClient<AuthApiClient>(client =>
+            {
+                client.BaseAddress = new System.Uri("http://localhost:5000/api/");
+            });
+
+            services.AddHttpContextAccessor();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

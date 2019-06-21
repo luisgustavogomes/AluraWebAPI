@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Alura.ListaLeitura.Api.Formatters;
+﻿using Alura.ListaLeitura.Api.Formatters;
 using Alura.ListaLeitura.Modelos;
 using Alura.ListaLeitura.Persistencia;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System;
 
 namespace AluraWebApi.Api
 {
@@ -31,7 +27,6 @@ namespace AluraWebApi.Api
                 options.UseSqlServer(Configuration.GetConnectionString("ListaLeitura"));
             });
 
-            services.AddTransient<IRepository<Livro>, RepositorioBaseEF<Livro>>();
 
             services
                 .AddMvc(options =>
@@ -59,6 +54,7 @@ namespace AluraWebApi.Api
                 };
             });
 
+            services.AddTransient<IRepository<Livro>, RepositorioBaseEF<Livro>>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -9,8 +9,14 @@ using Lista = Alura.ListaLeitura.Modelos.ListaLeitura;
 
 namespace Alura.ListaLeitura.Api.Controllers
 {
+    /// <summary>
+    /// Para utilização de acesso pela query string, deve-se remover da Route a propriedade de versão, com isso é possível criar
+    /// que a rota é acessada pelo parametro ?api-version=1.0 [Por examplo]
+    /// </summary>
     [Authorize]
-    [Route("api/v1.0/[controller]")]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
+    [Route("api/v{version:apiversion}/[controller]")]
     [ApiController]
     public class ListasLeituraController : ControllerBase
     {

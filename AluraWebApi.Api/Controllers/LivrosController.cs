@@ -4,26 +4,33 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
+// Versão 1.0 - Versão no Endpoint
+
 namespace Alura.ListaLeitura.Api.Controllers
 {
+    /// <summary>
+    /// 
+    ///   Created() --> 201
+    ///   Ok() --> 200
+    ///   BadRequest() --> 400
+    ///   NoContent() --> 204
+    ///    --EXEMPLO DE GET COM UM ARRAY NO QUER
+    ///   [AllowAnonymous]
+    ///   [HttpGet]
+    ///   public ActionResult GetPowerPlants([FromQuery(Name = "id")] int[] id)
+    ///   {
+    ///       ///condigo...
+    ///       return Ok(ids);
+    ///   }
+    /// 
+    /// </summary>
+    
     [Authorize]
     [ApiController]
-    [Route("api/v1.0/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiversion}/livros")]
     public class LivrosController : ControllerBase
     {
-        //Created() --> 201
-        //Ok() --> 200
-        //BadRequest() --> 400
-        //NoContent() --> 204
-        // --EXEMPLO DE GET COM UM ARRAY NO QUER
-        //[AllowAnonymous]
-        //[HttpGet]
-        //public ActionResult GetPowerPlants([FromQuery(Name = "id")] int[] id)
-        //{
-        //    ///condigo...
-        //    return Ok(ids);
-        //}
-
         private readonly IRepository<Livro> _repo;
 
         public LivrosController(IRepository<Livro> repository) => _repo = repository;

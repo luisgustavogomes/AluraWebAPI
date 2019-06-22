@@ -4,21 +4,25 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
-// Versão 2.0 - Versão no Endpoint
-
+// Versão 3.0 - Versão na query string
 
 namespace Alura.ListaLeitura.Api.Controllers
 {
+    /// <summary>
+    /// Para acesso via header deve-se alterar o services.AddApiVersioning e adiconar em sua criação uma instancia de 
+    /// new HeaderApiVersionReader("api-version"); com a chave do header...
+    /// 
+    /// </summary>
     [Authorize]
     [ApiController]
-    [ApiVersion("2.0")]
-    [Route("api/v{version:apiversion}/livros")]
-    public class Livros2Controller : ControllerBase
+    [ApiVersion("3.0")]
+    [Route("api/livros")]
+    public class Livros3Controller : ControllerBase
     {
   
         private readonly IRepository<Livro> _repo;
 
-        public Livros2Controller(IRepository<Livro> repository) => _repo = repository;
+        public Livros3Controller(IRepository<Livro> repository) => _repo = repository;
 
         [HttpGet]
         public IActionResult RecuperarListaDeLivros()

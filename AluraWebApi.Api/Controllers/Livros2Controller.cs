@@ -1,5 +1,6 @@
 ﻿using Alura.ListaLeitura.Modelos;
 using Alura.ListaLeitura.Persistencia;
+using AluraWebApi.Api.Modelos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -21,10 +22,17 @@ namespace Alura.ListaLeitura.Api.Controllers
         public Livros2Controller(IRepository<Livro> repository) => _repo = repository;
 
         [HttpGet]
-        public IActionResult RecuperarListaDeLivros()
+        public IActionResult RecuperarListaDeLivros(
+            [FromQuery] LivroFiltro filtro,
+            [FromQuery] LivroOrdem ordem,
+            [FromQuery] LivroPaginacao paginacao)
         {
-            var lista = _repo.All.Select(l => l.ToApi()).ToList();
-            return Ok(lista);
+            var livroPaginado = _repo.All
+                .AplicaFiltro(filtro)
+                .AplicaOrdem(ordem)
+                .Select(l => l.ToApi())
+                .ToLivroPaginado(paginacao);
+            return Ok(livroPaginado);
         }
 
         [HttpGet("{id}")]
